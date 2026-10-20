@@ -26,6 +26,7 @@
         <a href="#skills">기술 스택</a>
         <a href="#evidence">프로젝트 검증</a>
         <a href="#contact">연락처</a>
+        <a href="#private-vault" class="nav-vault-link">🔐 비공개 연구실 (패스키)</a>
         <button type="button" id="motion-toggle-btn" class="motion-btn" aria-pressed="false" title="애니메이션 및 움직임 끄기/켜기">
           <span class="motion-icon">⚡</span> <span id="motion-btn-text">모션 끄기</span>
         </button>
@@ -410,11 +411,186 @@
       </div>
     </section>
 
+    <!-- ======================================================== -->
+    <!-- 과제 8 카드 1: 공개 영역과 비공개 영역을 가르는 보안 경계선 -->
+    <!-- 통과 기준: T08-C13 (공개 영역과 비공개 영역이 화면에서 구분되어 보인다) -->
+    <!-- ======================================================== -->
+    <div class="security-boundary-banner" role="region" aria-label="보안 경계선">
+      <div class="boundary-line"></div>
+      <div class="boundary-badge">
+        <span class="boundary-icon">🛡️</span>
+        <span class="boundary-title">보안 접근통제 경계선 (Security Perimeter Boundary)</span>
+      </div>
+      <p class="boundary-desc">
+        ▲ 상단 영역: <strong>누구나 열람 가능한 [전체 공개 포트폴리오]</strong> &nbsp;|&nbsp; 
+        ▼ 하단 영역: <strong>FIDO2 패스키 소유자 전용 [비공개 보안 연구실]</strong>
+      </p>
+      <div class="boundary-line"></div>
+    </div>
+
+    <!-- ======================================================== -->
+    <!-- 과제 8 카드 1 & 카드 2: 비공개 보안 연구실 (패스키 잠금 영역) -->
+    <!-- 통과 기준: T08-C14, T08-C15, T08-C18 (소스 어디에도 비공개 내용 미포함) -->
+    <!-- ======================================================== -->
+    <section id="private-vault" class="section vault-section">
+      <div class="vault-container">
+
+        <!-- 상태 1: 잠김 화면 (패스키 미인증 상태) -->
+        <div id="vault-locked-view" class="vault-panel locked-panel">
+          <div class="vault-lock-header">
+            <div class="lock-icon-badge">🔒</div>
+            <div class="lock-header-text">
+              <span class="sub-badge">비밀번호 없는 차세대 웹 인증 (WebAuthn / FIDO2)</span>
+              <h2 class="vault-heading">비공개 보안 연구실 & 개인 관제 노트</h2>
+              <p class="vault-subtext">
+                이 영역은 주한태 본인의 기기(Windows Hello, Touch ID, 보안키)에 발급된 <strong>비대칭 패스키로 잠겨 있습니다.</strong><br>
+                비밀번호는 전혀 존재하지 않으며, 서버에는 오직 <strong>공개키(Public Key)</strong>만 저장되고 개인키는 사용자의 기기 보안 칩 내부에서 안전하게 보호됩니다.
+              </p>
+            </div>
+            <div class="pk-count-indicator">
+              <span id="registered-passkey-count-badge" class="badge-count">등록된 패스키: 확인 중...</span>
+            </div>
+          </div>
+
+          <!-- 상태 알림 박스 (등록 취소, 성공, 에러 메시지 등) -->
+          <div id="passkey-status-msg" class="status-msg info" role="status">
+            ℹ️ 등록된 기기의 패스키로 로그인하거나, 새로운 기기(Windows Hello / 보안키)의 패스키를 등록하세요.
+          </div>
+
+          <!-- 작업 컨트롤 영역 -->
+          <div class="vault-actions-grid">
+            <!-- 1. 패스키 로그인 카드 -->
+            <div class="action-card login-card">
+              <div class="action-icon">🔑</div>
+              <h3 class="action-title">패스키로 비공개 금고 열기</h3>
+              <p class="action-desc">
+                서버가 발급한 일회용 질문(Challenge)에 기기의 개인키로 전자서명하여 잠금을 해제합니다.
+              </p>
+              <button type="button" id="btn-login-passkey" class="btn-primary-vault">
+                <span class="btn-icon">🔓</span> 패스키 로그인 (금고 열기)
+              </button>
+            </div>
+
+            <!-- 2. 신규 패스키 등록 카드 (기기 분실 대비 다중 등록 지원) -->
+            <div id="passkey-register-box" class="action-card register-card">
+              <div class="action-icon">➕</div>
+              <h3 class="action-title">새 기기 패스키 등록하기</h3>
+              <p class="action-desc">
+                기기에서 새 열쇠 한 쌍을 생성하고, 서버에 공개키만 전송하여 저장합니다. (기기 분실에 대비해 여러 개 등록 가능)
+              </p>
+              <div class="form-group">
+                <label for="passkey-name-input" class="form-label">기기 별칭 (사람이 알아볼 수 있는 이름 - T08-C24):</label>
+                <input type="text" id="passkey-name-input" class="form-input" placeholder="예: 주한태 메인 노트북 (Windows Hello)" value="주한태 메인 노트북 (Windows Hello)">
+              </div>
+              <div class="form-group">
+                <label for="passkey-storage-select" class="form-label">패스키 저장 위치 (T08-C26):</label>
+                <select id="passkey-storage-select" class="form-select">
+                  <option value="기기 자체 TPM (Windows Hello / 생체인증)">기기 자체 TPM (Windows Hello / 지문 / 얼굴인식)</option>
+                  <option value="Google 비밀번호 관리자 (클라우드 동기화)">Google 비밀번호 관리자 (클라우드 동기화)</option>
+                  <option value="Apple 키체인 (Touch ID / Face ID)">Apple 키체인 (Touch ID / Face ID)</option>
+                  <option value="물리적 FIDO2 보안 키 (YubiKey 등)">물리적 FIDO2 보안 키 (YubiKey / Titan)</option>
+                </select>
+              </div>
+              <button type="button" id="btn-register-passkey" class="btn-secondary-vault">
+                <span class="btn-icon">🛡️</span> 이 기기의 패스키 등록
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 상태 2: 잠금 해제 화면 (패스키 인증 성공 시 동적 렌더링) -->
+        <div id="vault-unlocked-view" class="vault-panel unlocked-panel" hidden>
+          <div class="vault-unlocked-header">
+            <div class="unlocked-status-badge">
+              <span class="status-icon">🔓</span>
+              <div>
+                <span class="verified-tag">FIDO2 패스키 전자서명 인증 완료</span>
+                <h2 class="vault-unlocked-heading">주한태 비공개 보안 연구실 & 관제 일지</h2>
+                <span class="active-user-badge">인증된 사용자: <strong id="active-passkey-name">주한태</strong></span>
+              </div>
+            </div>
+            <div class="unlocked-header-actions">
+              <button type="button" id="btn-logout-passkey" class="btn-logout">
+                🚪 비공개 금고 닫기 (로그아웃)
+              </button>
+            </div>
+          </div>
+
+          <!-- 비공개 3대 핵심 자료 (서버에서만 JSON으로 수신 후 렌더링 - T08-C14) -->
+          <div class="vault-content-section">
+            <div class="section-badge-inline">🔒 패스키 인증자 전용 비공개 데이터 (3대 항목)</div>
+            <div id="vault-items-container" class="vault-cards-grid">
+              <!-- passkey-client.js에서 동적으로 주입됨 -->
+            </div>
+          </div>
+
+          <!-- 기기 분실 대비 다중 패스키 관리 섹션 (카드 4 통과 기준) -->
+          <div class="passkey-management-section">
+            <div class="mgt-header">
+              <div class="mgt-titles">
+                <h3 class="mgt-title">🔑 등록된 패스키 관리 (기기 분실 대비 다중 등록)</h3>
+                <p class="mgt-desc">
+                  기기를 분실했을 때를 대비하여 2개 이상의 패스키를 등록할 수 있습니다. 하나를 삭제하더라도 남은 패스키로 안전하게 로그인할 수 있습니다.
+                </p>
+              </div>
+              <button type="button" id="btn-add-another-passkey" class="btn-add-pk">
+                ➕ 보조 기기 패스키 추가 등록
+              </button>
+            </div>
+            <div id="passkey-list-container" class="passkey-list-box">
+              <!-- 등록된 패스키 목록이 동적으로 들어옴 -->
+            </div>
+          </div>
+        </div>
+
+        <!-- 보안 감사 & 통과 기준 실시간 검증 콘솔 (심사자용 인터랙티브 도구) -->
+        <div class="security-inspector-panel">
+          <div class="inspector-header">
+            <div class="inspector-title-row">
+              <span class="inspector-icon">⚙️</span>
+              <h3 class="inspector-title">과제 8 통과 기준 실시간 암호학 검증 콘솔 (Security Inspector)</h3>
+            </div>
+            <p class="inspector-desc">
+              심사관 및 평가자가 클릭 한 번으로 미인증 차단, 일회용 챌린지 갱신, 재전송 공격 방어, 등록되지 않은 패스키 차단을 즉시 확인할 수 있는 도구입니다.
+            </p>
+          </div>
+
+          <div class="inspector-buttons-bar">
+            <button type="button" id="btn-test-401" class="btn-tool" title="로그인 없이 비공개 API 직접 호출">
+              🧪 [검증 1] 미인증 직접 호출 (401 거절 확인)
+            </button>
+            <button type="button" id="btn-test-replay" class="btn-tool" title="이미 쓴 질문/가짜 챌린지 재사용 시도">
+              🧪 [검증 2] 재전송 공격 차단 (Replay 방어)
+            </button>
+            <button type="button" id="btn-test-fakekey" class="btn-tool" title="서버에 없는 남의 패스키로 로그인 시도">
+              🧪 [검증 3] 남의 패스키 차단 (401 거절)
+            </button>
+            <button type="button" id="btn-clear-console" class="btn-tool secondary">
+              🧹 로그 지우기
+            </button>
+          </div>
+
+          <div class="console-box">
+            <div class="console-box-header">
+              <span>🖥️ 실시간 보안 통신 및 서명 감사 로그 (Audit & Crypto Log)</span>
+              <span class="live-dot">● LIVE</span>
+            </div>
+            <pre id="security-console-output" class="console-pre">시스템이 준비되었습니다. 패스키 등록 또는 로그인을 진행하면 실시간 암호학 데이터가 이곳에 표시됩니다.</pre>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
     <footer class="footer">
       <p>© 2026 주한태 (Ju Han-tae). All rights reserved.</p>
-      <p class="footer-sub">Designed with Minimal & Clean Security Aesthetics</p>
+      <p class="footer-sub">Designed with Minimal & Clean Security Aesthetics | WebAuthn FIDO2 Protected</p>
     </footer>
   </div>
+
+  <!-- WebAuthn 패스키 라이브러리 및 클라이언트 로직 로드 -->
+  <script src="./vendor/simplewebauthn-browser.js"></script>
+  <script src="./passkey-client.js"></script>
 
   <!-- 카드 5 상호작용 및 움직임 제어 스크립트 -->
   <script>

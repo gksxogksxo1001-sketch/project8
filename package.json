@@ -1,0 +1,28 @@
+{
+  "name": "project8",
+  "version": "1.0.0",
+  "description": "> 위협을 사전에 감지하고 시스템과 네트워크를 견고하게 보호하는 **보안관제(SOC) 전문가**를 꿈꾸는 주한태의 자기소개 및 포트폴리오 웹사이트 저장소입니다.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gksxogksxo1001-sketch/Myname.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/gksxogksxo1001-sketch/Myname/issues"
+  },
+  "homepage": "https://github.com/gksxogksxo1001-sketch/Myname#readme",
+  "dependencies": {
+    "@simplewebauthn/browser": "^14.0.0",
+    "@simplewebauthn/server": "^14.0.3",
+    "cookie-parser": "^1.4.7",
+    "express": "^5.3.0"
+  }
+}

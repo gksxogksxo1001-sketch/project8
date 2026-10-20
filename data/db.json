@@ -1,0 +1,277 @@
+{
+  "user": {
+    "id": "juhantae_sec_2026",
+    "username": "juhantae",
+    "displayName": "주한태 (보안관제 준비생)"
+  },
+  "authenticators": [
+    {
+      "id": "cred_google_passkey_mobile_2026",
+      "publicKey": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEd2F1bHRfc2VjX2tleV84OTB4eXphYmMxMjM0NTY3OA",
+      "counter": 1,
+      "deviceType": "multiDevice",
+      "backedUp": true,
+      "transports": [
+        "hybrid",
+        "internal"
+      ],
+      "name": "주한태 스마트폰 (Google 비밀번호 관리자 Passkey)",
+      "storageType": "Google 비밀번호 관리자 (클라우드 동기화)",
+      "createdAt": "2026-10-20T03:35:00.000Z"
+    }
+  ],
+  "sessions": {
+    "test-valid-vault-session-1792467568621": {
+      "username": "juhantae",
+      "passkeyId": "cred_mobile_sec_pxZgVccX0io",
+      "passkeyName": "주한태 모바일 (Google 비밀번호 관리자 Passkey)",
+      "createdAt": 1792467568621
+    }
+  },
+  "auditLogs": [
+    {
+      "id": "2c3d99d0-b048-4dca-8093-f09976798d8e",
+      "timestamp": "2026-10-20T04:56:13.110Z",
+      "type": "UNAUTHORIZED_ACCESS_ATTEMPT",
+      "message": "미인증 사용자의 비공개 금고 데이터 직접 접근 차단 (401 반환)",
+      "details": {}
+    },
+    {
+      "id": "21dad2d6-f4c0-4cfc-a3d5-3048c12129d1",
+      "timestamp": "2026-10-20T04:56:13.089Z",
+      "type": "LOGOUT",
+      "message": "사용자 로그아웃 완료 (주한태 스마트폰 (Google 비밀번호 관리자 Passkey))",
+      "details": {}
+    },
+    {
+      "id": "1d716c6d-55aa-4d29-9303-5352f27fc09b",
+      "timestamp": "2026-10-20T04:56:13.072Z",
+      "type": "PRIVATE_VAULT_ACCESSED",
+      "message": "비공개 금고 데이터 정상 조회 (인증 패스키: 주한태 스마트폰 (Google 비밀번호 관리자 Passkey))",
+      "details": {}
+    },
+    {
+      "id": "2fc490c7-80dd-4891-8caa-36593ca54a7f",
+      "timestamp": "2026-10-20T04:56:13.058Z",
+      "type": "LOGIN_BLOCKED_UNKNOWN_PASSKEY",
+      "message": "서버에 등록되지 않은 남의 패스키(Credential) 시도 차단",
+      "details": {
+        "unregisteredId": "cred_win_hello_laptop_2026"
+      }
+    },
+    {
+      "id": "df8dfc23-e75e-4fd6-b2ce-c8f404f5405e",
+      "timestamp": "2026-10-20T04:56:13.039Z",
+      "type": "LOGIN_CHALLENGE_CREATED",
+      "message": "로그인용 신규 일회용 챌린지(질문) 생성 완료",
+      "details": {
+        "challenge": "eV7qWL8gDfCVBDlg08YrqOtmHUpqx_w_HcBUBPoKfRM",
+        "allowedPasskeysCount": 1
+      }
+    },
+    {
+      "id": "747ded54-f826-4881-8ae3-da7d7d14657e",
+      "timestamp": "2026-10-20T04:56:13.032Z",
+      "type": "PASSKEY_DELETED",
+      "message": "패스키 삭제 완료 (이름: 주한태 메인 랩탑 (Windows Hello TPM 지문), ID: cred_win_hello_laptop_2026)",
+      "details": {
+        "remainingCount": 1
+      }
+    },
+    {
+      "id": "f0746d1c-6f1d-482f-ade3-007d3c18f6c9",
+      "timestamp": "2026-10-20T04:56:13.025Z",
+      "type": "LOGIN_BLOCKED_UNKNOWN_PASSKEY",
+      "message": "서버에 등록되지 않은 남의 패스키(Credential) 시도 차단",
+      "details": {
+        "unregisteredId": "attacker-unregistered-passkey-id-9999"
+      }
+    },
+    {
+      "id": "214b10f4-a20a-4dd7-b940-709c421213dd",
+      "timestamp": "2026-10-20T04:56:13.010Z",
+      "type": "LOGIN_CHALLENGE_CREATED",
+      "message": "로그인용 신규 일회용 챌린지(질문) 생성 완료",
+      "details": {
+        "challenge": "SGXcCEUKMBKSbaUaKVP9-PwpYBMriBQPXImtAKsVKtI",
+        "allowedPasskeysCount": 2
+      }
+    },
+    {
+      "id": "cb9f57d3-4453-45b0-b0a4-ca8d1ea97b44",
+      "timestamp": "2026-10-20T04:56:12.994Z",
+      "type": "LOGIN_ERROR",
+      "message": "로그인 검증 처리 오류: Credential ID was not base64url-encoded",
+      "details": {}
+    },
+    {
+      "id": "dcc50a31-072b-4a66-8002-f81c942002dc",
+      "timestamp": "2026-10-20T04:56:12.964Z",
+      "type": "LOGIN_CHALLENGE_CREATED",
+      "message": "로그인용 신규 일회용 챌린지(질문) 생성 완료",
+      "details": {
+        "challenge": "Ep6oXBk1XxH9nuMZcxWJYxaXDo4tP52eipJbBDgO5v0",
+        "allowedPasskeysCount": 1
+      }
+    },
+    {
+      "id": "9bf6152e-9458-437a-b04c-fcceb3661d1c",
+      "timestamp": "2026-10-20T04:56:12.949Z",
+      "type": "LOGIN_CHALLENGE_CREATED",
+      "message": "로그인용 신규 일회용 챌린지(질문) 생성 완료",
+      "details": {
+        "challenge": "cRfUCqYLL1K1YzxHLtFptEi2DYZj8J85VpWs1Z-CqAo",
+        "allowedPasskeysCount": 1
+      }
+    },
+    {
+      "id": "6e5d4b9b-f20a-4343-81ea-424784cbffc1",
+      "timestamp": "2026-10-20T03:39:28.631Z",
+      "type": "PRIVATE_VAULT_ACCESSED",
+      "message": "비공개 금고 데이터 정상 조회 (인증 패스키: 주한태 모바일 (Google 비밀번호 관리자 Passkey))",
+      "details": {}
+    },
+    {
+      "id": "1e72bf28-cecb-4e58-bfcf-49364fa2b65a",
+      "timestamp": "2026-10-20T03:39:28.613Z",
+      "type": "LOGIN_BLOCKED_UNKNOWN_PASSKEY",
+      "message": "서버에 등록되지 않은 남의 패스키(Credential) 시도 차단",
+      "details": {
+        "unregisteredId": "unregistered-intruder-device-credential-id"
+      }
+    },
+    {
+      "id": "aa546dd6-5bf6-4309-a918-c225752bed0e",
+      "timestamp": "2026-10-20T03:39:28.595Z",
+      "type": "LOGIN_CHALLENGE_CREATED",
+      "message": "로그인용 신규 일회용 챌린지(질문) 생성 완료",
+      "details": {
+        "challenge": "L9Tq8RnzQxPrgpMMig2ctmkrbGQkOKWgvurDo9cLLB8",
+        "allowedPasskeysCount": 1
+      }
+    },
+    {
+      "id": "03f7ed3d-e5b8-44d7-b699-d027ba79037a",
+      "timestamp": "2026-10-20T03:39:28.584Z",
+      "type": "PASSKEY_DELETED",
+      "message": "패스키 삭제 완료 (이름: 주한태 메인 랩탑 (Windows Hello TPM 지문), ID: cred_laptop_tpm_344g7ZQuw18)",
+      "details": {
+        "remainingCount": 1
+      }
+    },
+    {
+      "id": "d4df546e-263b-468e-bf21-5803841de772",
+      "timestamp": "2026-10-20T03:39:28.578Z",
+      "type": "LOGIN_BLOCKED_REPLAY",
+      "message": "존재하지 않거나 이미 소모된 챌린지로 로그인 재시도 차단 (Replay Attack 방어)",
+      "details": {
+        "receivedCredentialId": "fake-id"
+      }
+    },
+    {
+      "id": "bf105a33-8665-4a8f-ab3b-3acb5edeba7c",
+      "timestamp": "2026-10-20T03:39:28.534Z",
+      "type": "REGISTER_CHALLENGE_CREATED",
+      "message": "패스키 등록용 일회용 챌린지 생성 완료",
+      "details": {
+        "challenge": "HsEAIIDwbDzIxMIM3j26pt4vhLtxcUsZlx1tfRufeH4",
+        "username": "juhantae",
+        "rpID": "localhost"
+      }
+    },
+    {
+      "id": "2c5cfef8-88a9-4811-bea9-fb82f19f593b",
+      "timestamp": "2026-10-20T03:39:28.523Z",
+      "type": "REGISTER_CHALLENGE_CREATED",
+      "message": "패스키 등록용 일회용 챌린지 생성 완료",
+      "details": {
+        "challenge": "5bhrhn6ggSGc0wgSKoYN79kWVUv1eE247wLGIr-hM7U",
+        "username": "juhantae",
+        "rpID": "localhost"
+      }
+    },
+    {
+      "id": "d2622615-4716-4bab-8e92-780310c90a28",
+      "timestamp": "2026-10-20T03:39:28.506Z",
+      "type": "UNAUTHORIZED_ACCESS_ATTEMPT",
+      "message": "미인증 사용자의 비공개 금고 데이터 직접 접근 차단 (401 반환)",
+      "details": {}
+    },
+    {
+      "id": "538c7769-43ba-40fd-b2e2-52794429da92",
+      "timestamp": "2026-10-20T03:38:26.711Z",
+      "type": "LOGIN_BLOCKED_REPLAY",
+      "message": "존재하지 않거나 이미 소모된 챌린지로 로그인 재시도 차단 (Replay Attack 방어)",
+      "details": {
+        "receivedCredentialId": "unregistered-intruder-device-credential-id"
+      }
+    },
+    {
+      "id": "7c80d796-e862-4a9e-b55e-644130cfc2c0",
+      "timestamp": "2026-10-20T03:38:26.705Z",
+      "type": "LOGIN_BLOCKED_REPLAY",
+      "message": "존재하지 않거나 이미 소모된 챌린지로 로그인 재시도 차단 (Replay Attack 방어)",
+      "details": {
+        "receivedCredentialId": "fake-id"
+      }
+    },
+    {
+      "id": "5a32b301-c4bf-4915-8501-cece62ba5cd7",
+      "timestamp": "2026-10-20T03:38:26.459Z",
+      "type": "REGISTER_CHALLENGE_CREATED",
+      "message": "패스키 등록용 일회용 챌린지 생성 완료",
+      "details": {
+        "challenge": "WSYh4OlfLrqy2BkylCEXFsbqI3YK-IVMj59K5Z7KGPc",
+        "username": "juhantae",
+        "rpID": "localhost"
+      }
+    },
+    {
+      "id": "5ca1beb0-7e50-4367-9745-85815e73f241",
+      "timestamp": "2026-10-20T03:38:26.455Z",
+      "type": "REGISTER_CHALLENGE_CREATED",
+      "message": "패스키 등록용 일회용 챌린지 생성 완료",
+      "details": {
+        "challenge": "T5dHO3tHUFqzzj-MJZG_Bn8XVd6l_l3hHO9RMY-CrR8",
+        "username": "juhantae",
+        "rpID": "localhost"
+      }
+    },
+    {
+      "id": "6daa22d4-efe2-4c9c-bde1-9233c9a440b5",
+      "timestamp": "2026-10-20T03:38:26.451Z",
+      "type": "UNAUTHORIZED_ACCESS_ATTEMPT",
+      "message": "미인증 사용자의 비공개 금고 데이터 직접 접근 차단 (401 반환)",
+      "details": {}
+    },
+    {
+      "id": "9d4683f7-04d2-4bf1-b78d-2ec4935dc538",
+      "timestamp": "2026-10-20T03:36:34.884Z",
+      "type": "REGISTER_CHALLENGE_CREATED",
+      "message": "패스키 등록용 일회용 챌린지 생성 완료",
+      "details": {
+        "challenge": "tui5KeeaTLMZQegwYfYAjSFaAfDjAJuz6eEFBOEqmRU",
+        "username": "juhantae",
+        "rpID": "localhost"
+      }
+    },
+    {
+      "id": "d5ede73d-bc54-4c2d-a8be-c71a5d0ae85b",
+      "timestamp": "2026-10-20T03:36:34.869Z",
+      "type": "REGISTER_CHALLENGE_CREATED",
+      "message": "패스키 등록용 일회용 챌린지 생성 완료",
+      "details": {
+        "challenge": "ij63tE6TVnKitEbcsqxfkLroBhoNYdfc664q3NryUEI",
+        "username": "juhantae",
+        "rpID": "localhost"
+      }
+    },
+    {
+      "id": "523dd907-1ded-436a-a8d8-4303f204aa6e",
+      "timestamp": "2026-10-20T03:34:59.003Z",
+      "type": "UNAUTHORIZED_ACCESS_ATTEMPT",
+      "message": "미인증 사용자의 비공개 금고 데이터 직접 접근 차단 (401 반환)",
+      "details": {}
+    }
+  ]
+}
